@@ -1,0 +1,8 @@
+<div *ngIf="messages">
+    <h3 class="text-lg font-bold">Kafka Consumer Messages</h3>
+    <ul class="list-disc pl-4">
+        {{messages | json}}
+      <li *ngFor="let msg of messages">{{ msg }}</li>  
+    </ul>
+  </div>
+  

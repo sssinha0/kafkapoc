@@ -1,0 +1,116 @@
+<button mat-raised-button color="primary" [routerLink]="['/consumer']" routerLinkActive="router-link-active"  >Consumer</button>
+<form (ngSubmit)="onContinue()" *ngIf="isProducer" class="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-8">
+
+    <!-- JSON Upload -->
+    <div>
+      <mat-checkbox [(ngModel)]="inputs.json.selected" name="jsonSelected" color="primary">
+        Upload JSON
+      </mat-checkbox>
+  
+      <div *ngIf="inputs.json.selected" class="mt-2">
+        <label class="block text-sm font-medium mb-1">Select JSON File:</label>
+        <input type="file"
+               accept=".json"
+               class="file-input text-sm py-2"
+               (change)="handleFileUpload($event,'json')">
+      </div>
+    </div>
+  
+    <!-- Excel Upload -->
+    <div>
+      <mat-checkbox [(ngModel)]="inputs.excel.selected" name="excelSelected" color="primary">
+        Upload Excel
+      </mat-checkbox>
+  
+      <div *ngIf="inputs.excel.selected" class="mt-2">
+        <label class="block text-sm font-medium mb-1">Select Excel File (.xlsx/.csv):</label>
+        <input type="file"
+               accept=".xlsx,.csv"
+               class="file-input text-sm py-2"
+               (change)="handleFileUpload($event,'excel')">
+      </div>
+    </div>
+  
+    <!-- SQL Input -->
+    <div>
+      <mat-checkbox [(ngModel)]="inputs.sql.selected" name="sqlSelected" color="primary">
+        SQL Query + DB Config
+      </mat-checkbox>
+  
+      <div *ngIf="inputs.sql.selected" class="grid md:grid-cols-2 gap-4 mt-4">
+        <mat-form-field appearance="fill">
+          <mat-label>SQL Query</mat-label>
+          <textarea matInput [(ngModel)]="inputs.sql.query" name="sqlQuery"></textarea>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>DB Host</mat-label>
+          <input matInput [(ngModel)]="inputs.sql.host" name="dbHost" placeholder="localhost">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>DB Port</mat-label>
+          <input matInput type="number" [(ngModel)]="inputs.sql.port" name="dbPort" placeholder="5432">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>DB Name</mat-label>
+          <input matInput [(ngModel)]="inputs.sql.db" name="dbName">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>DB Username</mat-label>
+          <input matInput [(ngModel)]="inputs.sql.user" name="dbUser">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>DB Password</mat-label>
+          <input matInput type="password" [(ngModel)]="inputs.sql.password" name="dbPassword">
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <!-- Kafka Producer Config -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-semibold text-gray-800">Kafka Producer Configuration</h3>
+  
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Kafka Topic</mat-label>
+        <input matInput required [(ngModel)]="inputs.kafka.topic" name="kafkaTopic">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Group Name</mat-label>
+        <input matInput [(ngModel)]="inputs.kafka.groupName" name="groupName">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Bootstrap Servers</mat-label>
+        <input matInput required [(ngModel)]="inputs.kafka.bootstrapServers" name="bootstrapServers" placeholder="localhost:9092">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>API Key</mat-label>
+        <input matInput [(ngModel)]="inputs.kafka.apiKey" name="apiKey">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>API Secret</mat-label>
+        <input matInput type="password" [(ngModel)]="inputs.kafka.apiSecret" name="apiSecret">
+      </mat-form-field>
+  
+      <mat-checkbox [(ngModel)]="inputs.kafka.useSSL" name="useSSL">
+        Use SSL for Kafka Connection
+      </mat-checkbox>
+  
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Additional Kafka Config</mat-label>
+        <textarea matInput rows="2" [(ngModel)]="inputs.kafka.additionalConfig" name="additionalConfig" placeholder='{"acks": "all"}'></textarea>
+      </mat-form-field>
+    </div>
+  
+    <!-- Submit -->
+    <button mat-raised-button color="primary" type="submit" class="w-full mt-6">
+      🚀 Continue & Send to Kafka
+    </button>
+  
+  </form>
