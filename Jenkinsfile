@@ -22,9 +22,9 @@ pipeline {
     stage('Docker Build & Push') {
       steps {
         script {
-          sh "docker build -t $DOCKER_IMAGE ."
-          sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-          sh "docker push $DOCKER_IMAGE"
+          sh "sudo docker build -t $DOCKER_IMAGE ."
+          sh "echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin"
+          sh "sudo docker push $DOCKER_IMAGE"
         }
       }
     }
