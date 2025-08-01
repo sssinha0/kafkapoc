@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/sssinha0/kafkapoc.git'
+        git branch: 'feature/frontend', url: 'https://github.com/sssinha0/kafkapoc.git'
       }
     }
     stage('Install Dependencies') {
