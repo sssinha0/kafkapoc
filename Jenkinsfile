@@ -28,10 +28,10 @@ pipeline {
         }
       }
     }
-    stage('Deploy') {
-      steps {
-        // Your deploy logic here (could be Kubernetes, etc.)
-      }
-    }
+    // stage('Deploy') {
+    //   steps {
+    //     // Your deploy logic here (could be Kubernetes, etc.)
+    //   }
+    // }
   }
 }
