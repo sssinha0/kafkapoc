@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+  environment {
+    DOCKER_IMAGE = 'yourdockerid/my-angular-app'
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/your-username/your-repo.git'
+      }
+    }
+    stage('Install Dependencies') {
+      steps {
+        sh 'npm ci'
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'ng build --configuration=production'
+      }
+    }
+    stage('Docker Build & Push') {
+      steps {
+        script {
+          sh "docker build -t $DOCKER_IMAGE ."
+          sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+          sh "docker push $DOCKER_IMAGE"
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        // Your deploy logic here (could be Kubernetes, etc.)
+      }
+    }
+  }
+}

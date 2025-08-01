@@ -19,6 +19,7 @@ export class ConsumerComponent {
     console.log(this.messages)
   }
   async getMessages(topic: string, groupId: string) {
+    this.messages= [];
     try {
       console.log('Fetching messages...');
       const url = `http://localhost:8082/kafka/messages?topic=${topic}&groupId=${groupId}`;
