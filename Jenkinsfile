@@ -1,12 +1,12 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE = 'yourdockerid/my-angular-app'
+    DOCKER_IMAGE = 'yourdockerid/kafkapooc'
   }
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/your-username/your-repo.git'
+        git 'https://github.com/sssinha0/kafkapoc.git'
       }
     }
     stage('Install Dependencies') {
