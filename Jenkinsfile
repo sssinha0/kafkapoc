@@ -23,7 +23,7 @@ pipeline {
       steps {
         script {
           sh "whoami"
-          sh "docker build -t kafkapoc:latest ."
+          sh "sudo docker build -t kafkapoc:latest ."
           // sh "echo $DOCKER_PASSWORD | sudo docker login -u $DOCKER_USERNAME --password-stdin"
           // sh "sudo docker push $DOCKER_IMAGE"
         }
