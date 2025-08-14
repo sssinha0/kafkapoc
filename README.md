@@ -6,7 +6,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Development server
 [Screencast from 2025-07-28 09-46-04.webm](https://github.com/user-attachments/assets/2df9b1d4-6b46-4140-bb38-4a39b757b600)
 
-To start a local development server, run:
+To start a local development server, run: s
 
 ```bash
 ng serve
