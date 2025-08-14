@@ -29,10 +29,13 @@ pipeline {
         }
       }
     }
-    // stage('Deploy') {
-    //   steps {
-    //     // Your deploy logic here (could be Kubernetes, etc.)
-    //   }
-    // }
+    stage('Deploy') {
+      steps {
+        script{
+          sh: "docker run -d -p 80:80 kafkapoc:latest"
+        }
+        // Your deploy logic here (could be Kubernetes, etc.)
+      }
+    }
   }
 }
