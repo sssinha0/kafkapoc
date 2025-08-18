@@ -30,7 +30,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script{
-          sh "docker run -d -p 8000:80 kafkapoc:latest"
+          sh "docker compose up -d"
         }
         // Your deploy logic here (could be Kubernetes, etc.)
       }
