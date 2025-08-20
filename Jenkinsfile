@@ -37,7 +37,7 @@ pipeline {
                     )]){
           sh  "docker login -u $DOCKER_USER -p $DOCKER_PASS"
           sh "docker image tag kafkapoc:latest $DOCKER_USER/kafkapoc:latest"
-          sh "docker $DOCKER_USER/push kafkapoc:latest"
+          sh "docker push $DOCKER_USER/kafkapoc:latest"
                     }
         }
       }
