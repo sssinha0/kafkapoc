@@ -4,6 +4,13 @@ pipeline {
     DOCKER_IMAGE = 'yourdockerid/kafkapooc'
   }
   stages {
+    stage("hello"){
+      steps{
+        script{
+          clone()
+        }
+      }
+    }
     stage('Checkout') {
       steps {
         git branch: 'feature/frontend', url: 'https://github.com/sssinha0/kafkapoc.git'
