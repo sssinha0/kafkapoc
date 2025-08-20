@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   web:
-    image: rahulraj0380106/kafkapoc:tagname
+    image: rahulraj0380106/kafkapoc:latest
     build:
       context: .
     ports:
