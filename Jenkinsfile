@@ -1,4 +1,4 @@
-@Library('Shared@feature/shared') _
+@Library('Shared') _
 pipeline {
   agent any
   environment {
@@ -8,7 +8,7 @@ pipeline {
     stage("hello"){
       steps{
         script{
-          clone()
+          hello()
         }
       }
     }
