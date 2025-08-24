@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Checkout') {
       steps {
-        git branch: 'feature/frontend', url: 'https://github.com/sssinha0/kafkapoc.git'
+        clone( 'https://github.com/sssinha0/kafkapoc.git','feature/frontend')
       }
     }
     // stage('Install Dependencies') {
